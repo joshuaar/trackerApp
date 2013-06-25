@@ -37,22 +37,44 @@ app.get('/users', user.list);
 var longPollTimeout = 30000
 var connected = {}
 
-app.get('/p/uid/:dev',function(req,res){
+//adds remotes to connected object, to be accessed by others
+app.get('/p/:dev/listen',function(req,res){
+    //console.log(connected[req.params.dev] == null)
     if(connected[req.params.dev]){
 
-        connected[req.params.dev]["req"].send(200) //deal with old request
-        connected[req.params.dev] = {req:req,time:new Date().getTime()} //Put new request in connected dict.
-
+        //connected[req.params.dev]["res"].send(200) //deal with old request
+        //connected[req.params.dev] = {res:res,time:new Date().getTime()} //Put new request in connected dict.
+        res.send(403)
+        console.log(connected)
     } else {
-        connected[req.params.dev] = {req:req,time:new Date().getTime()} //Put new request in connected dict
+        var time = new Date().getTime()
+        connected[req.params.dev] = {res:res,time:time} //Put new request in connected dict
+        //res.send("hello")
+        setTimeout(function(){   //After a certain time, remove connection from dict of active connections
+            try{
+               // console.log(connected[req.params.dev]["time"])
+               // console.log(time)
+                if(connected[req.params.dev]["time"] == time){
+                    connected[req.params.dev]["res"].send(200)
+                    connected[req.params.dev] = null
+                }
+            } catch (exception) {
+                console.log("request expired")
+            }
+        },longPollTimeout)
     }
-    setTimeout(function(){   //After a certain time, remove connection from dict of active connections
-        connected[req.params.dev]["req"].send(200)
-        connected[req.params.dev] = null
-    },longPollTimeout)
-
 })
 
+app.get('/m/:dev/:msg',function(req,res){
+    console.log(req.params.msg)
+    if(connected[req.params.dev]){
+        connected[req.params.dev]["res"].send("Greetings from elsewhere: "+req.params.msg)
+        connected[req.params.dev] = null
+        res.send(200)
+    }
+    res.send("Device not connected")
+
+})
 
 //Routes for adding, getting, deleting (potentially) connectable devices
 
