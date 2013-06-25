@@ -30,10 +30,10 @@ function ConRequest(res,time){
     this.res = res
     this.time = time
     this.sendAlert = function(uid,devID){
-        this.res.send(":NeW:"+uid+":"+devID)
+        this.res.send({type:"alert",uid:uid,devID:devID})
     }
     this.sendMsg = function(msg){
-        this.res.send(":wMsG:"+msg)
+        this.res.send({type:"msg",msg:msg})
     }
     this.send = function(msg){
         this.res.send(msg)
