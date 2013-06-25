@@ -12,12 +12,33 @@ var ipSchema = mongoose.Schema({
     devID: String
 });
 
+var msgSchema = mongoose.Schema({
+    devID: String,
+    msg: String
+})
 
 ipSchema.methods.speak = function() {
 	console.log("IP: "+this.ip+"\tUID: "+this.uid)
 };
 
+var MSG = mongoose.model("MSG",msgSchema)
+
 var IP = mongoose.model('IP',ipSchema)
+
+//Represents a connected request
+function ConRequest(res,time){
+    this.res = res
+    this.time = time
+    this.sendAlert = function(uid,devID){
+        this.res.send(":NeW:"+uid+":"+devID)
+    }
+    this.sendMsg = function(msg){
+        this.res.send(":wMsG:"+msg)
+    }
+    this.send = function(msg){
+        this.res.send(msg)
+    }
+}
 
 //Insert an IP address with uid into the DB
 var insertIP = function(ip,ipLocal, uid, callback) {
@@ -61,7 +82,7 @@ var alertUID = function(uid,devID){
             var curdev = records[i].devID
             if(connected[curdev]){
                 if(curdev != devID){
-                    connected[curdev]["res"].send(":NeW:"+uid+":"+devID)
+                    connected[curdev].sendAlert(uid,devID)
                     connected[curdev] = null
                 }
             }
@@ -85,15 +106,15 @@ var longPollHandler = function(req,res){
             //What to do if the listening device is registered (everything is going well)
             else{
                 var time = new Date().getTime()
-                connected[req.params.dev] = {res:res,time:time} //Put new request in connected dict
+                connected[req.params.dev] = new ConRequest(res,time) //Put new request in connected dict
 
                 updateDevTimestamp(req.params.dev,time)//update timestamp in DB
 
                 setTimeout(function(){   //After a certain time, remove connection from dict of active connections
                     try{
 
-                        if(connected[req.params.dev]["time"] == time){
-                            connected[req.params.dev]["res"].send(200)
+                        if(connected[req.params.dev].time == time){
+                            connected[req.params.dev].send(200)
                             connected[req.params.dev] = null
                         }
                     } catch (exception) {
@@ -108,7 +129,7 @@ var longPollHandler = function(req,res){
 var devPostHandler = function(req,res){
     if(connected[req.params.dev]){
         console.log(req.body)
-        connected[req.params.dev]["res"].send(JSON.stringify(req.body))
+        connected[req.params.dev].send(JSON.stringify(req.body))
         connected[req.params.dev] = null
         res.send(200)
     }
