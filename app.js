@@ -33,6 +33,29 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 
+//Routes for polling
+var longPollTimeout = 30000
+var connected = {}
+
+app.get('/p/uid/:dev',function(req,res){
+    if(connected[req.params.dev]){
+
+        connected[req.params.dev]["req"].send(200) //deal with old request
+        connected[req.params.dev] = {req:req,time:new Date().getTime()} //Put new request in connected dict.
+
+    } else {
+        connected[req.params.dev] = {req:req,time:new Date().getTime()} //Put new request in connected dict
+    }
+    setTimeout(function(){   //After a certain time, remove connection from dict of active connections
+        connected[req.params.dev]["req"].send(200)
+        connected[req.params.dev] = null
+    },longPollTimeout)
+
+})
+
+
+//Routes for adding, getting, deleting (potentially) connectable devices
+
 app.get('/u/:uid', function(req,res){
     mongoCon.getIPs(req.params.uid,function(ips){
         var ipTxt = new Array()
@@ -52,9 +75,14 @@ app.post('/u/:uid',function(req,res){
 })
 
 app.delete('/u/:uid',function(req,res){
-    mongoCon.clearUID(req.params.uid)
-    //res.send(mongoCon.getIPs(req.params.uid))
+    try{
+        mongoCon.clearUID(req.params.uid)
+        res.send(200)
+    } catch (exception) {
+        res.send(404)
+    }
 })
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
