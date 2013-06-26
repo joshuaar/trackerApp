@@ -57,7 +57,7 @@ var insertIP = function(ip,ipLocal, uid, callback) {
                 ipEntry.save(function(err, ipEntry){//The function is called, this is to check errors
                     if(err) throw err;
                     ipEntry.speak();
-                    alertUID(uid,devID)
+                    //alertUID(uid,devID)
                     callback(devID)
                 });
             }
@@ -142,11 +142,11 @@ var getIPs = function(uid, callback) {
 	console.log("Fetching IPs for "+uid)
 	IP.find({uid: uid} ,function(err, ips) {
 		if(err) throw err
-        //var ipTxt = new Array()
-        //for(var i=0;i<ips.length;i++){
-       //     ipTxt[i]=ips[i].ip
-        //}
-		callback(ips)
+        var ipTxt = new Array()
+        for(var i=0;i<ips.length;i++){
+            ipTxt[i]={ip:ips[i].ip,devID:ips[i].devID}
+        }
+		callback(ipTxt)
 	})
 }
 //fires callback if device is registered, else err
