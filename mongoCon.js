@@ -33,7 +33,7 @@ function ConRequest(res,time){
         this.res.send({type:"alert",uid:uid,devID:devID})
     }
     this.sendMsg = function(msg){
-        this.res.send({type:"msg",msg:msg})
+        this.res.send(msg)
     }
     this.send = function(msg){
         this.res.send(msg)
