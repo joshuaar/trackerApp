@@ -55,7 +55,7 @@ app.post('/u/:uid',function(req,res){
     var uid = req.params.uid
     mongoCon.insertIP(extern,intern,req.params.uid, function(devID){
 
-        res.send(devID)
+        res.send({ipLocal:intern,ipExternal:extern,devID:devID})
     })
 })
 
