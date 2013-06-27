@@ -144,7 +144,7 @@ var getIPs = function(uid, callback) {
 		if(err) throw err
         var ipTxt = new Array()
         for(var i=0;i<ips.length;i++){
-            ipTxt[i]={ip:ips[i].ip,devID:ips[i].devID}
+            ipTxt[i]={ipLocal:ips[i].ip.local,ipExternal:ips[i].ip.external,devID:ips[i].devID}
         }
 		callback(ipTxt)
 	})
