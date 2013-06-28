@@ -66,7 +66,7 @@ var insertIP = function(ip,ipLocal, uid, callback) {
                 IP.update(uniqueID,entry,function(err, numAffected){
                     if(err) throw err
                     console.log("updated "+numAffected+" records")
-                    console.log(ips)
+                    //console.log(ips)
                     callback(ips[0].devID)//give existing devID
                 })
             }
@@ -97,7 +97,7 @@ var longPollHandler = function(req,res){
     if(connected[req.params.dev]){
 
         res.send(403)
-        console.log(connected)
+        //console.log(connected)
     } else {
         isRegisteredDevice(req,function(err){
             if(err){
@@ -128,7 +128,7 @@ var longPollHandler = function(req,res){
 
 var devPostHandler = function(req,res){
     if(connected[req.params.dev]){
-        console.log(req.body)
+        //console.log(req.body)
         connected[req.params.dev].send(JSON.stringify(req.body))
         connected[req.params.dev] = null
         res.send(200)
