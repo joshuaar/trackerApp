@@ -43,9 +43,17 @@ app.post('/p/:dev',mongoCon.devPostHandler)
 
 //Routes for adding, getting, deleting (potentially) connectable devices
 
+//get all information about a uid
 app.get('/u/:uid', function(req,res){
     mongoCon.getIPs(req.params.uid,function(ips){
         res.send(ips)
+    })
+})
+
+//get a particular device info
+app.get("/u/:uid/:devID",function(req,res{
+    mongoCon.getDev(req.params.uid,req.params.devID,function(devInfo){
+        res.send(devInfo)
     })
 })
 

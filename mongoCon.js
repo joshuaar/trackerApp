@@ -137,6 +137,11 @@ var devPostHandler = function(req,res){
 
 }
 
+//Formats database results into simpler json for sending on the server
+var formatIP = function(mongoRes){
+    return {ipLocal:mongoRes.ip.local,ipExternal:mongoRes.ip.external,devID:mongoRes.devID}
+}
+
 //get the IPs associated with a user ID
 var getIPs = function(uid, callback) {
 	console.log("Fetching IPs for "+uid)
@@ -144,11 +149,26 @@ var getIPs = function(uid, callback) {
 		if(err) throw err
         var ipTxt = new Array()
         for(var i=0;i<ips.length;i++){
-            ipTxt[i]={ipLocal:ips[i].ip.local,ipExternal:ips[i].ip.external,devID:ips[i].devID}
+            //ipTxt[i]={ipLocal:ips[i].ip.local,ipExternal:ips[i].ip.external,devID:ips[i].devID}
+            ipTxt[i]=formatIP(ips[i])
         }
 		callback(ipTxt)
 	})
 }
+
+var getDevInfo = function(uid,devID,callback) {
+    console.log("Fetching device properties for "+devID)
+    IP.find({uid:uid,devID:devID}, function(err,ips){
+        if(err) throw err
+        if(ip.length != 1){
+            throw new Error("Critical Error: This device is not unique")
+        }
+        else{
+            callback(formatIP(ips[0]))
+        }
+    })
+}
+
 //fires callback if device is registered, else err
 var isRegisteredDevice = function(req, callback) {
     var devID = req.params.dev
