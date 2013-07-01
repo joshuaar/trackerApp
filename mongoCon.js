@@ -160,7 +160,7 @@ var getDevInfo = function(uid,devID,callback) {
     console.log("Fetching device properties for "+devID)
     IP.find({uid:uid,devID:devID}, function(err,ips){
         if(err) throw err
-        if(ip.length != 1){
+        if(ips.length != 1){
             throw new Error("Critical Error: This device is not unique")
         }
         else{
