@@ -232,6 +232,7 @@ exports.updateDevTimestamp = updateDevTimestamp
 exports.rmOld = rmOld
 exports.longPollHandler = longPollHandler
 exports.devPostHandler = devPostHandler
+exports.getDevInfo = getDefInfo
 //clearUID("Default")
 //insertIP("192.168.1.123", "Default")
 //getIPs("Default",console.log)

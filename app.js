@@ -52,7 +52,7 @@ app.get('/u/:uid', function(req,res){
 
 //get a particular device info
 app.get("/u/:uid/:devID",function(req,res){
-    mongoCon.getDev(req.params.uid,req.params.devID,function(devInfo){
+    mongoCon.getDevinfo(req.params.uid,req.params.devID,function(devInfo){
         res.send(devInfo)
     })
 })
