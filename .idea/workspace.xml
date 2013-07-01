@@ -28,19 +28,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="41" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0">
+            <state line="56" column="18" selection-start="1428" selection-end="1428" vertical-scroll-proportion="0.49748743">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mongoCon.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="mongoCon.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mongoCon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="12" selection-start="5396" selection-end="5396" vertical-scroll-proportion="0.9648506">
+            <state line="155" column="106" selection-start="4909" selection-end="4909" vertical-scroll-proportion="-9.964286">
               <folding />
             </state>
           </provider>
@@ -74,8 +74,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/mongoCon.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -345,16 +345,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/mongoCon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="41" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0">
+        <state line="155" column="106" selection-start="4909" selection-end="4909" vertical-scroll-proportion="-9.964286">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongoCon.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="12" selection-start="5396" selection-end="5396" vertical-scroll-proportion="0.9648506">
+        <state line="56" column="18" selection-start="1428" selection-end="1428" vertical-scroll-proportion="0.49748743">
           <folding />
         </state>
       </provider>
