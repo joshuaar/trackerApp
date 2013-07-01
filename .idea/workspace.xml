@@ -8,7 +8,7 @@
     <ignored path="trackerApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/app.js" changelist="3c38df59-51cb-43fc-861a-54b76914b4a7" time="1372714405076" ignored="false" />
-    <file path="/mongoCon.js" changelist="3c38df59-51cb-43fc-861a-54b76914b4a7" time="1372714382435" ignored="false" />
+    <file path="/mongoCon.js" changelist="3c38df59-51cb-43fc-861a-54b76914b4a7" time="1372714532898" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,19 +28,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="89" selection-start="1436" selection-end="1436" vertical-scroll-proportion="0.6281407">
+            <state line="57" column="41" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mongoCon.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="mongoCon.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongoCon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="234" column="31" selection-start="7069" selection-end="7069" vertical-scroll-proportion="-64.78571">
+            <state line="234" column="27" selection-start="7065" selection-end="7065" vertical-scroll-proportion="0.71001756">
               <folding />
             </state>
           </provider>
@@ -74,8 +74,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/mongoCon.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/mongoCon.js" />
       </list>
     </option>
   </component>
@@ -345,16 +345,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongoCon.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="234" column="31" selection-start="7069" selection-end="7069" vertical-scroll-proportion="-64.78571">
+        <state line="57" column="41" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/mongoCon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="89" selection-start="1436" selection-end="1436" vertical-scroll-proportion="0.6281407">
+        <state line="234" column="27" selection-start="7065" selection-end="7065" vertical-scroll-proportion="0.71001756">
           <folding />
         </state>
       </provider>
