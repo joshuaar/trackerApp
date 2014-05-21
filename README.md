@@ -1,4 +1,4 @@
 trackerApp
 ==========
 
-Helps computers find eachother. Used with RUDP_Share
+Helps computers find each other. Used with RUDP_Share
